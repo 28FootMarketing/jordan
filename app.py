@@ -1,9 +1,27 @@
 import streamlit as st
 
-# Page configuration
-st.set_page_config(page_title="Jordan Bot - Onboarding Specialist")
+# Page config
+st.set_page_config(page_title="Jordan Bot - The Closer", page_icon="🏀", layout="centered")
 
-# Title and header
+# Branding
+st.image("Upgraded logo 3-13-24 black letters sports on road.png", width=200)
+st.markdown("### *Start Strong. Start Smart. Start With Jordan.*")
+
+# Custom CSS styling
+st.markdown("""
+<style>
+div.stButton > button:first-child {
+    background-color: #003366;
+    color: white;
+    font-weight: bold;
+    border-radius: 12px;
+    height: 3em;
+    width: 100%;
+}
+</style>
+""", unsafe_allow_html=True)
+
+# App Header
 st.title("🏀 Jordan Bot: The Closer")
 st.subheader("Helping You Start Strong in Your Recruiting Journey")
 
@@ -44,6 +62,6 @@ if st.button("Generate Onboarding Summary"):
     **Highlight Video:** [Watch Video]({video_link})  
     **Target Schools:** {target_schools}
     """)
-    
+
     st.balloons()
     st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
