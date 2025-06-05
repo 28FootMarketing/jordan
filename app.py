@@ -49,5 +49,5 @@ if st.button("Generate Onboarding Summary"):
     st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
 def run():
     # Move your entire app logic into this function.
-    st.title("jordan.py")
+    st.title("jordan bot")
     # ... rest of the agent's interface ...
