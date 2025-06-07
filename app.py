@@ -1,5 +1,6 @@
 import streamlit as st
 import os
+import requests
 
 # --- Agent Metadata ---
 AGENT_NAME = "Jordan"
@@ -15,6 +16,9 @@ AGENT_RESPONSIBILITIES = [
     "Collect profile information",
     "Guide through the recruiting timeline"
 ]
+
+# GoHighLevel Webhook URL (replace with your actual form ID)
+GHL_FORM_URL = "https://webhooks.leadconnectorhq.com/form/submit/YOUR_FORM_ID"
 
 # --- Page Configuration ---
 st.set_page_config(page_title=f"{AGENT_NAME} Bot - {AGENT_ROLE}", layout="centered")
@@ -52,13 +56,14 @@ video_link = st.text_input("Paste Your Highlight Video Link (YouTube, Hudl, etc.
 st.header("Step 3: Identify Target Schools")
 target_schools = st.text_area("List Your Target Colleges (separate by commas)")
 
-# --- Summary Output ---
+# --- Summary Output and GHL Submission ---
 if st.button("Generate Onboarding Summary"):
-    if not name or not sport or not position:
+    if not name or not phone or not sport or not position:
         st.warning(AGENT_FALLBACK)
     else:
         st.success("✅ Profile Summary Generated")
         st.markdown(f"""**Student Name:** {name}  
+**Phone Number:** {phone}  
 **Graduation Year:** {graduation_year}  
 **Sport:** {sport}  
 **Position:** {position}  
@@ -66,4 +71,24 @@ if st.button("Generate Onboarding Summary"):
 **Target Schools:** {target_schools}
 """.strip())
         st.balloons()
-        st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
+
+        # Send to GoHighLevel
+        payload = {
+            "name": name,
+            "phone": phone,
+            "grad_year": graduation_year,
+            "sport": sport,
+            "position": position,
+            "video_link": video_link,
+            "target_schools": target_schools,
+            "lead_source": "JordanBot"
+        }
+
+        try:
+            response = requests.post(https://connect.28footmarketing.com/widget/form/Muy6TJKltd0NNdPq13Lv, json=payload)
+            if response.status_code == 200:
+                st.success("📬 Jordan Bot successfully sent your info to the recruiting team!")
+            else:
+                st.error(f"❌ Failed to connect to GoHighLevel. Status Code: {response.status_code}")
+        except Exception as e:
+            st.error(f"⚠️ Error while sending data to GoHighLevel: {e}")
