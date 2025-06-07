@@ -1,6 +1,7 @@
 import streamlit as st
+import os
 
-# --- Agent Metadata (Hidden from display) ---
+# --- Agent Metadata ---
 AGENT_NAME = "Jordan"
 AGENT_ROLE = "Onboarding Specialist"
 AGENT_NICKNAME = "The Closer"
@@ -19,14 +20,17 @@ AGENT_RESPONSIBILITIES = [
 st.set_page_config(page_title=f"{AGENT_NAME} Bot - {AGENT_ROLE}", layout="centered")
 
 # --- Header ---
-st.image(AGENT_AVATAR, width=120)
+if os.path.exists(AGENT_AVATAR):
+    st.image(AGENT_AVATAR, width=120)
+else:
+    st.warning(f"⚠️ Agent avatar '{AGENT_AVATAR}' not found. Please upload the image.")
+
 st.title(f"🏀 {AGENT_NAME}: {AGENT_NICKNAME}")
 st.subheader("Helping You Start Strong in Your Recruiting Journey")
 st.markdown("**Style of Play:** Dominant, confident, and precise")
 
 # --- Agent Introduction ---
-st.markdown("""
-Jordan is here to walk you through the very first steps of your recruiting journey.  
+st.markdown("""Jordan is here to walk you through the very first steps of your recruiting journey.  
 From creating your profile to selecting your target schools, this onboarding assistant ensures you're set up for success from Day One.
 
 Just like MJ made his mark early in every game, **Jordan Bot** ensures every family starts strong.
@@ -53,24 +57,22 @@ if st.button("Generate Onboarding Summary"):
         st.warning(AGENT_FALLBACK)
     else:
         st.success("✅ Profile Summary Generated")
-        st.markdown(f"""
-        **Student Name:** {name}  
-        **Graduation Year:** {graduation_year}  
-        **Sport:** {sport}  
-        **Position:** {position}  
-        **Highlight Video:** [Watch Video]({video_link})  
-        **Target Schools:** {target_schools}
-        """)
+        st.markdown(f"""**Student Name:** {name}  
+**Graduation Year:** {graduation_year}  
+**Sport:** {sport}  
+**Position:** {position}  
+**Highlight Video:** [Watch Video]({video_link})  
+**Target Schools:** {target_schools}
+""".strip())
         st.balloons()
         st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
 
 # --- Optional Debug/Trainer View ---
 with st.expander("🔧 Agent Metadata (Trainer View)"):
-    st.caption(f"""
-    🧍 **Agent:** {AGENT_NAME}  
-    🎯 **Role:** {AGENT_ROLE}  
-    🏷️ **Nickname:** "{AGENT_NICKNAME}"  
-    📂 **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
-    ✅ **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
-    💬 **Fallback:** {AGENT_FALLBACK}
-    """)
+    st.caption(f"""🧍 **Agent:** {AGENT_NAME}  
+🎯 **Role:** {AGENT_ROLE}  
+🏷️ **Nickname:** "{AGENT_NICKNAME}"  
+📂 **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
+✅ **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
+💬 **Fallback:** {AGENT_FALLBACK}
+""")
