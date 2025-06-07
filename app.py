@@ -1,6 +1,6 @@
 import streamlit as st
 
-# --- Agent Metadata ---
+# --- Agent Metadata (Hidden from display) ---
 AGENT_NAME = "Jordan"
 AGENT_ROLE = "Onboarding Specialist"
 AGENT_NICKNAME = "The Closer"
@@ -22,11 +22,11 @@ st.subheader("Helping You Start Strong in Your Recruiting Journey")
 st.markdown("**Style of Play:** Dominant, confident, and precise")
 
 # --- Agent Introduction ---
-st.markdown(f"""
-{AGENT_NAME} is here to walk you through the very first steps of your recruiting journey.  
+st.markdown("""
+Jordan is here to walk you through the very first steps of your recruiting journey.  
 From creating your profile to selecting your target schools, this onboarding assistant ensures you're set up for success from Day One.
 
-Just like MJ made his mark early in every game, **{AGENT_NAME} Bot** ensures every family starts strong.
+Just like MJ made his mark early in every game, **Jordan Bot** ensures every family starts strong.
 """)
 
 # --- Step 1: Basic Profile Setup ---
@@ -56,15 +56,15 @@ if st.button("Generate Onboarding Summary"):
     **Target Schools:** {target_schools}
     """)
     st.balloons()
-    st.info(f"{AGENT_NAME} Bot says: Great start! Now keep building your recruiting momentum.")
+    st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
 
-# --- Agent Metadata Footer ---
-st.markdown("---")
-st.caption(f"""
-🧍 {AGENT_NAME}  
-**Role:** {AGENT_ROLE}  
-**Nickname:** "{AGENT_NICKNAME}"  
-**Workflow File:** `{AGENT_WORKFLOW_FILE}`  
-**Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
-Trigger Command: `trigger_agent("{AGENT_NAME}")`
-""")
+# (Optional) Uncomment this if needed for debugging or admin view
+# st.markdown("---")
+# st.caption(f"""
+# 🧍 {AGENT_NAME}  
+# **Role:** {AGENT_ROLE}  
+# **Nickname:** "{AGENT_NICKNAME}"  
+# **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
+# **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
+# Trigger Command: `trigger_agent("{AGENT_NAME}")`
+# """)
