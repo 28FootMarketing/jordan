@@ -66,13 +66,3 @@ if st.button("Generate Onboarding Summary"):
 """.strip())
         st.balloons()
         st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
-
-# --- Optional Debug/Trainer View ---
-with st.expander("🔧 Agent Metadata (Trainer View)"):
-    st.caption(f"""🧍 **Agent:** {AGENT_NAME}  
-🎯 **Role:** {AGENT_ROLE}  
-🏷️ **Nickname:** "{AGENT_NICKNAME}"  
-📂 **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
-✅ **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
-💬 **Fallback:** {AGENT_FALLBACK}
-""")
