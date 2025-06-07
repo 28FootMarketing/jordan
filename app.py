@@ -4,7 +4,7 @@ import streamlit as st
 st.set_page_config(page_title="Jordan Bot - Onboarding Specialist")
 
 # Title and header
-st.title("🏀 Jordan Bot: The Closer")
+st.title("🏀 Jordan: The Closer")
 st.subheader("Helping You Start Strong in Your Recruiting Journey")
 
 # Style of Play
@@ -12,7 +12,7 @@ st.markdown("**Style of Play:** Dominant, confident, and precise")
 
 # Introduction
 st.markdown("""
-Jordan Bot is here to walk you through the very first steps of your recruiting journey.  
+Jordan is here to walk you through the very first steps of your recruiting journey.  
 From creating your profile to selecting your target schools, this onboarding assistant ensures you're set up for success from Day One.
 
 Just like MJ made his mark early in every game, Jordan Bot ensures every family starts strong.
@@ -51,3 +51,12 @@ def run():
     # Move your entire app logic into this function.
     st.title("jordan bot")
     # ... rest of the agent's interface ...
+🧍 Jordan
+Role: Onboarding Specialist
+Nickname: "The Icebreaker"
+Workflow File: jordan_onboarding.json
+Responsibilities:
+- Welcome new athletes
+- Collect profile information
+- Guide through the recruiting timeline
+Trigger: `trigger_agent("Jordan")`
