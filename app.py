@@ -5,6 +5,10 @@ AGENT_NAME = "Jordan"
 AGENT_ROLE = "Onboarding Specialist"
 AGENT_NICKNAME = "The Closer"
 AGENT_WORKFLOW_FILE = "jordan_onboarding.json"
+AGENT_AVATAR = "jordan.png"
+AGENT_FALLBACK = (
+    "Missed a step? No worries—great players refocus fast. Let us start the onboarding again and take the next shot."
+)
 AGENT_RESPONSIBILITIES = [
     "Welcome new athletes",
     "Collect profile information",
@@ -15,10 +19,9 @@ AGENT_RESPONSIBILITIES = [
 st.set_page_config(page_title=f"{AGENT_NAME} Bot - {AGENT_ROLE}", layout="centered")
 
 # --- Header ---
-st.title(f"🏀 {AGENT_NAME}: The Closer")
+st.image(AGENT_AVATAR, width=120)
+st.title(f"🏀 {AGENT_NAME}: {AGENT_NICKNAME}")
 st.subheader("Helping You Start Strong in Your Recruiting Journey")
-
-# --- Agent Style ---
 st.markdown("**Style of Play:** Dominant, confident, and precise")
 
 # --- Agent Introduction ---
@@ -46,30 +49,28 @@ target_schools = st.text_area("List Your Target Colleges (separate by commas)")
 
 # --- Summary Output ---
 if st.button("Generate Onboarding Summary"):
-    st.success("✅ Profile Summary Generated")
-    st.markdown(f"""
-    **Student Name:** {name}  
-    **Graduation Year:** {graduation_year}  
-    **Sport:** {sport}  
-    **Position:** {position}  
-    **Highlight Video:** [Watch Video]({video_link})  
-    **Target Schools:** {target_schools}
-    """)
-    st.balloons()
-    st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
+    if not name or not sport or not position:
+        st.warning(AGENT_FALLBACK)
+    else:
+        st.success("✅ Profile Summary Generated")
+        st.markdown(f"""
+        **Student Name:** {name}  
+        **Graduation Year:** {graduation_year}  
+        **Sport:** {sport}  
+        **Position:** {position}  
+        **Highlight Video:** [Watch Video]({video_link})  
+        **Target Schools:** {target_schools}
+        """)
+        st.balloons()
+        st.info("Jordan Bot says: Great start! Now keep building your recruiting momentum.")
 
-# (Optional) Uncomment this if needed for debugging or admin view
-# st.markdown("---")
-# st.caption(f"""
-# 🧍 {AGENT_NAME}  
-# **Role:** {AGENT_ROLE}  
-# **Nickname:** "{AGENT_NICKNAME}"  
-# **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
-# **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
-# Trigger Command: `trigger_agent("{AGENT_NAME}")`
-# """)
-{
-    
-            "fallback": "Missed a step? No worries\u2014great players refocus fast. Let us start the onboarding again and take the next shot.",
-            "avatar": "jordan.png"
-        }
+# --- Optional Debug/Trainer View ---
+with st.expander("🔧 Agent Metadata (Trainer View)"):
+    st.caption(f"""
+    🧍 **Agent:** {AGENT_NAME}  
+    🎯 **Role:** {AGENT_ROLE}  
+    🏷️ **Nickname:** "{AGENT_NICKNAME}"  
+    📂 **Workflow File:** `{AGENT_WORKFLOW_FILE}`  
+    ✅ **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
+    💬 **Fallback:** {AGENT_FALLBACK}
+    """)
