@@ -18,7 +18,7 @@ AGENT_RESPONSIBILITIES = [
 ]
 
 # GoHighLevel Webhook URL (replace with your actual form ID)
-GHL_FORM_URL = "https://webhooks.leadconnectorhq.com/form/submit/YOUR_FORM_ID"
+GHL_FORM_URL = "https://webhooks.leadconnectorhq.com/form/submit/https://connect.28footmarketing.com/widget/form/Muy6TJKltd0NNdPq13Lv"
 
 # --- Page Configuration ---
 st.set_page_config(page_title=f"{AGENT_NAME} Bot - {AGENT_ROLE}", layout="centered")
@@ -85,7 +85,7 @@ if st.button("Generate Onboarding Summary"):
         }
 
         try:
-            response = requests.post(https://connect.28footmarketing.com/widget/form/Muy6TJKltd0NNdPq13Lv, json=payload)
+            response = requests.post("https://connect.28footmarketing.com/widget/form/Muy6TJKltd0NNdPq13Lv", json=payload)
             if response.status_code == 200:
                 st.success("📬 Jordan Bot successfully sent your info to the recruiting team!")
             else:
