@@ -68,3 +68,11 @@ if st.button("Generate Onboarding Summary"):
 # **Responsibilities:** {', '.join(AGENT_RESPONSIBILITIES)}  
 # Trigger Command: `trigger_agent("{AGENT_NAME}")`
 # """)
+{
+    "agents": {
+        "Jordan": {
+            "role": "Onboarding Coach",
+            "nickname": "The Closer",
+            "fallback": "Missed a step? No worries\u2014great players refocus fast. Let us start the onboarding again and take the next shot.",
+            "avatar": "jordan.png"
+        }
