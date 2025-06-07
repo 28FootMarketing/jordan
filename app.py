@@ -39,6 +39,7 @@ Just like MJ made his mark early in every game, **Jordan Bot** ensures every fam
 # --- Step 1: Basic Profile Setup ---
 st.header("Step 1: Basic Profile Setup")
 name = st.text_input("Student-Athlete Full Name")
+phone = st.text_input("Phone Number")
 graduation_year = st.selectbox("Graduation Year", [2025, 2026, 2027, 2028, 2029])
 sport = st.text_input("Primary Sport")
 position = st.text_input("Primary Position")
