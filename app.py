@@ -11,7 +11,7 @@ AGENT_FALLBACK = (
     "Missed a step? No worries—great players refocus fast. Let us start the onboarding again and take the next shot."
 )
 
-# ✅ GHL Custom Domain Form Submission URL
+# ✅ Correct GoHighLevel form URL
 GHL_FORM_URL = "https://connect.28footmarketing.com/widget/form/Muy6TJKltd0NNdPq13Lv"
 
 # --- Page Configuration ---
@@ -62,29 +62,27 @@ if st.button("Generate Onboarding Summary"):
 **Highlight Video:** [Watch Video]({video_link})  
 **Target Schools:** {target_schools}
 """.strip())
-        st.balloons()
 
-        # Use x-www-form-urlencoded for connect domain
+        # Corrected payload keys based on likely GHL form field names
         payload = {
             "name": name,
             "phone": phone,
-            "grad_year": graduation_year,
+            "graduationyear": graduation_year,
             "sport": sport,
             "position": position,
-            "video_link": video_link,
-            "target_schools": target_schools,
-            "lead_source": "JordanBot"
+            "videolink": video_link,
+            "targetschools": target_schools
         }
 
         try:
             headers = {"Content-Type": "application/x-www-form-urlencoded"}
             response = requests.post(GHL_FORM_URL, data=payload, headers=headers)
-          
-           
-           
+
             if response.status_code in [200, 302]:
                 st.success("📬 Jordan Bot successfully sent your info to the recruiting team!")
+                st.balloons()
             else:
-                st.error("❌ Submission failed. Check the debug info above.")
+                st.error(f"❌ Submission failed. Status Code: {response.status_code}")
+                st.text(response.text)
         except Exception as e:
             st.error(f"⚠️ Error while sending data to GoHighLevel: {e}")
