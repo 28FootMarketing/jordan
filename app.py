@@ -79,9 +79,9 @@ if st.button("Generate Onboarding Summary"):
         try:
             headers = {"Content-Type": "application/x-www-form-urlencoded"}
             response = requests.post(GHL_FORM_URL, data=payload, headers=headers)
-            st.write("📡 Debug Info")
-            st.write("Status Code:", response.status_code)
-            st.write("Response Text:", response.text)
+          
+           
+           
             if response.status_code in [200, 302]:
                 st.success("📬 Jordan Bot successfully sent your info to the recruiting team!")
             else:
